@@ -6,8 +6,37 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		048BF9282D07ECFF00FB5FFA /* ShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 048BF91E2D07ECFF00FB5FFA /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		048BF9262D07ECFF00FB5FFA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 048BF8FA2D07ECBE00FB5FFA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 048BF91D2D07ECFF00FB5FFA;
+			remoteInfo = ShareExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		048BF92D2D07ECFF00FB5FFA /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				048BF9282D07ECFF00FB5FFA /* ShareExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		048BF9022D07ECBE00FB5FFA /* PracticeShareExtension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PracticeShareExtension.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		048BF91E2D07ECFF00FB5FFA /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -17,6 +46,13 @@
 				Info.plist,
 			);
 			target = 048BF9012D07ECBE00FB5FFA /* PracticeShareExtension */;
+		};
+		048BF92C2D07ECFF00FB5FFA /* Exceptions for "ShareExtension" folder in "ShareExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 048BF91D2D07ECFF00FB5FFA /* ShareExtension */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -29,10 +65,25 @@
 			path = PracticeShareExtension;
 			sourceTree = "<group>";
 		};
+		048BF91F2D07ECFF00FB5FFA /* ShareExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				048BF92C2D07ECFF00FB5FFA /* Exceptions for "ShareExtension" folder in "ShareExtension" target */,
+			);
+			path = ShareExtension;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		048BF8FF2D07ECBE00FB5FFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		048BF91B2D07ECFF00FB5FFA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -46,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				048BF9042D07ECBE00FB5FFA /* PracticeShareExtension */,
+				048BF91F2D07ECFF00FB5FFA /* ShareExtension */,
 				048BF9032D07ECBE00FB5FFA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				048BF9022D07ECBE00FB5FFA /* PracticeShareExtension.app */,
+				048BF91E2D07ECFF00FB5FFA /* ShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -68,10 +121,12 @@
 				048BF8FE2D07ECBE00FB5FFA /* Sources */,
 				048BF8FF2D07ECBE00FB5FFA /* Frameworks */,
 				048BF9002D07ECBE00FB5FFA /* Resources */,
+				048BF92D2D07ECFF00FB5FFA /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				048BF9272D07ECFF00FB5FFA /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				048BF9042D07ECBE00FB5FFA /* PracticeShareExtension */,
@@ -82,6 +137,28 @@
 			productName = PracticeShareExtension;
 			productReference = 048BF9022D07ECBE00FB5FFA /* PracticeShareExtension.app */;
 			productType = "com.apple.product-type.application";
+		};
+		048BF91D2D07ECFF00FB5FFA /* ShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 048BF9292D07ECFF00FB5FFA /* Build configuration list for PBXNativeTarget "ShareExtension" */;
+			buildPhases = (
+				048BF91A2D07ECFF00FB5FFA /* Sources */,
+				048BF91B2D07ECFF00FB5FFA /* Frameworks */,
+				048BF91C2D07ECFF00FB5FFA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				048BF91F2D07ECFF00FB5FFA /* ShareExtension */,
+			);
+			name = ShareExtension;
+			packageProductDependencies = (
+			);
+			productName = ShareExtension;
+			productReference = 048BF91E2D07ECFF00FB5FFA /* ShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -94,6 +171,9 @@
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					048BF9012D07ECBE00FB5FFA = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					048BF91D2D07ECFF00FB5FFA = {
 						CreatedOnToolsVersion = 16.1;
 					};
 				};
@@ -113,12 +193,20 @@
 			projectRoot = "";
 			targets = (
 				048BF9012D07ECBE00FB5FFA /* PracticeShareExtension */,
+				048BF91D2D07ECFF00FB5FFA /* ShareExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		048BF9002D07ECBE00FB5FFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		048BF91C2D07ECFF00FB5FFA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -135,7 +223,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		048BF91A2D07ECFF00FB5FFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		048BF9272D07ECFF00FB5FFA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 048BF91D2D07ECFF00FB5FFA /* ShareExtension */;
+			targetProxy = 048BF9262D07ECFF00FB5FFA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		048BF9162D07ECBF00FB5FFA /* Debug */ = {
@@ -313,6 +416,56 @@
 			};
 			name = Release;
 		};
+		048BF92A2D07ECFF00FB5FFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7492YXB292;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.study.PracticeShareExtension.ShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		048BF92B2D07ECFF00FB5FFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7492YXB292;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.study.PracticeShareExtension.ShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -330,6 +483,15 @@
 			buildConfigurations = (
 				048BF9162D07ECBF00FB5FFA /* Debug */,
 				048BF9172D07ECBF00FB5FFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		048BF9292D07ECFF00FB5FFA /* Build configuration list for PBXNativeTarget "ShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				048BF92A2D07ECFF00FB5FFA /* Debug */,
+				048BF92B2D07ECFF00FB5FFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
