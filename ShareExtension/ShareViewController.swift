@@ -1,94 +1,76 @@
 import UIKit
 import Social
+import UniformTypeIdentifiers
 
-class ShareViewController: SLComposeServiceViewController {
-    private let items = ["Family", "Friends", "Study"]
-    let shareInItem = SLComposeSheetConfigurationItem()
+class ShareViewController: UIViewController {
+    private var navigationBar: UINavigationBar!
+    private var itemLabel: UILabel!
+    private var itemText: String?
     
     override func loadView() {
         super.loadView()
         guard let extensionContext = extensionContext else { return }
         guard let extensionItems = extensionContext.inputItems as? [NSExtensionItem] else { return }
         guard let extensionItem = extensionItems.first else { return }
-    }
-    
-    override func isContentValid() -> Bool {
-        return true
-    }
-    
-    override func didSelectPost() {
-        self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
-    }
-    
-    override func configurationItems() -> [Any]! {
-        // 1. Compose View 밑에 tableview로 나타날 Item 정의
-        shareInItem?.title = "Share in"
-        shareInItem?.value = items[0]
-        shareInItem?.tapHandler = { [weak self] in // 2. tapHandler에서 커스텀 뷰 호출
-            guard let self = self else { return }
-            self.showSelectionViewController()
-        }
+        guard let extensionItemProvider = extensionItem.attachments?.first else { return }
         
-        // 3. Item 리턴
-        return [shareInItem].compactMap { $0 }
-    }
-    
-    private func showSelectionViewController() {
-        // 선택을 위한 커스텀 뷰 컨트롤러
-        let selectionVC = SelectionViewController()
-        selectionVC.selectedItem = shareInItem!.value
-        selectionVC.items = items
-        selectionVC.onSelected = { [weak self] selectedItem in
-            self?.shareInItem?.value = selectedItem
-            self?.popConfigurationViewController() // 이전 화면으로 돌아감
+        if extensionItemProvider.hasItemConformingToTypeIdentifier(UTType.url.identifier) {
+            extensionItemProvider.loadItem(forTypeIdentifier: UTType.url.identifier, options: nil) { [weak self] (url, error) in
+                if let url = url as? URL {
+                    DispatchQueue.main.async {
+                        self?.itemLabel.text = url.absoluteString
+                    }
+                }
+            }
         }
-        
-        // 구성 뷰 컨트롤러 표시
-        pushConfigurationViewController(selectionVC)
     }
-    
-}
-
-// 선택을 위한 CustomView 작성
-class SelectionViewController: UIViewController {
-    var selectedItem: String = ""
-    var onSelected: ((String) -> Void)?
-    var items: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .clear
-        tableView.dataSource = self
-        tableView.delegate = self
-        view.addSubview(tableView)
-        
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
+        configureView()
     }
+    
 }
 
-extension SelectionViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+extension ShareViewController {
+    private func configureView() {
+        view.backgroundColor = .systemBackground
+        configureNavBar()
+        configureItemLabel()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        cell.backgroundColor = .clear
-        cell.textLabel?.text = items[indexPath.row]
-        cell.accessoryType = items[indexPath.row] == selectedItem ? .checkmark : .none
-        return cell
+    private func configureNavBar() {
+        navigationBar = UINavigationBar()
+        navigationBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        let navItem = UINavigationItem(title: "ShareExtenion 연습")
+        navItem.leftBarButtonItem = UIBarButtonItem(systemItem: .cancel)
+        navItem.rightBarButtonItem = UIBarButtonItem(systemItem: .done)
+        navigationBar.setItems([navItem], animated: false)
+        
+        view.addSubview(navigationBar)
+        
+        NSLayoutConstraint.activate([
+            navigationBar.topAnchor.constraint(equalTo: view.topAnchor),
+            navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selected = items[indexPath.row]
-        onSelected?(selected)
+    private func configureItemLabel() {
+        itemLabel = UILabel()
+        itemLabel.translatesAutoresizingMaskIntoConstraints = false
+        itemLabel.backgroundColor = .black
+        itemLabel.textColor = .white
+        itemLabel.text = "Hello Share Extension"
+        
+        view.addSubview(itemLabel)
+        
+        NSLayoutConstraint.activate([
+            itemLabel.widthAnchor.constraint(equalToConstant: 300),
+            itemLabel.heightAnchor.constraint(equalToConstant: 50),
+            itemLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            itemLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
 }
