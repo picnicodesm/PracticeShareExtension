@@ -6,6 +6,7 @@ class ShareViewController: UIViewController {
     private var navigationBar: UINavigationBar!
     private var itemLabel: UILabel!
     private var itemText: String?
+    private let databaseManager = DataBaseManager.shared
     
     override func loadView() {
         super.loadView()

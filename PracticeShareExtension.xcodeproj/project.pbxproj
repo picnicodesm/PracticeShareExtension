@@ -54,6 +54,13 @@
 			);
 			target = 048BF91D2D07ECFF00FB5FFA /* ShareExtension */;
 		};
+		048BF9662D0ACB2700FB5FFA /* Exceptions for "PracticeShareExtension" folder in "ShareExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				DataBaseManager.swift,
+			);
+			target = 048BF91D2D07ECFF00FB5FFA /* ShareExtension */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -61,6 +68,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				048BF9142D07ECBF00FB5FFA /* Exceptions for "PracticeShareExtension" folder in "PracticeShareExtension" target */,
+				048BF9662D0ACB2700FB5FFA /* Exceptions for "PracticeShareExtension" folder in "ShareExtension" target */,
 			);
 			path = PracticeShareExtension;
 			sourceTree = "<group>";
